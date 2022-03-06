@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "HotelBookingApp",
-    "slug": "hotelbookingapp",
+    "slug": "hotelbookingapp2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,14 +18,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.example.app"
+      "bundleIdentifier": "com.example.hotelbookingapp2"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.example.app"
+      "package": "com.example.hotelbookingapp2"
     },
     "web": {
       "favicon": "./assets/favicon.png"
