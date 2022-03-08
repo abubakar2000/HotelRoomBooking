@@ -55,7 +55,7 @@ const MemberShipInfo = () => {
           </View>
         </View>
         <View style={{
-          backgroundColor: '#64B657', flexDirection: 'row', minHeight: 70, width: '95%', backgroundColor: '#64B657', borderRadius: 10,
+          backgroundColor: '#64B657', flexDirection: 'row', minHeight: 70, width: '95%', borderRadius: 10,
           marginTop: 20, alignItems: 'center', justifyContent: 'space-between'
         }}>
           <View style={{ flexDirection: 'column', padding: 15 }}>

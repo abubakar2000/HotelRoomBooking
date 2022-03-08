@@ -74,6 +74,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Settings from "../screens/Settings";
 import Language from "../screens/Language";
+import RedeemHistory from "../screens/RedeemHistory";
+import TalkToUs from "../screens/TalkToUs";
+import ForgotPassword from "../screens/ForgotPassword";
 
 
 const Drawer = createDrawerNavigator();
@@ -102,6 +105,9 @@ export default function DrawerApp() {
         <Drawer.Screen options={{headerShown:false}} name="Rooms" component={Rooms} />
         <Drawer.Screen options={{headerShown:false}} name="Settings" component={Settings} />
         <Drawer.Screen options={{headerShown:false}} name="Language" component={Language} />
+        <Drawer.Screen options={{headerShown:false}} name="RedeemHistory" component={RedeemHistory} />
+        <Drawer.Screen options={{headerShown:false}} name="TalkToUs" component={TalkToUs} />
+        <Drawer.Screen options={{headerShown:false}} name="ForgotPassword" component={ForgotPassword} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
