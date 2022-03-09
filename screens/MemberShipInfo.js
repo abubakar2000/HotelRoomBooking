@@ -1,11 +1,78 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Image, StyleSheet, Text, View, Modal, TextInput, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react';
+import { Dimensions } from 'react-native';
+import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import userImage from '../assets/10.jpg';
-import { Entypo, Ionicons } from '@expo/vector-icons';
 
-const MemberShipInfo = () => {
+
+const { height, width } = Dimensions.get('screen');
+const MemberShipInfo = ({ navigation }) => {
+  const [ShowModal, setShowModal] = useState(false);
+  const [MembershipFamilyCode, setMembershipFamilyCode] = useState("")
+  const [MemberShipFamilyCodeError, setMemberShipFamilyCodeError] = useState(true)
   return (
     <View style={{ flexDirection: 'column', flex: 1 }}>
+
+      <Modal
+        animationType='slide'
+        visible={ShowModal}
+        transparent={true}
+        onRequestClose={() => {
+          Alert.alert("Modal closed")
+          setShowModal(false)
+        }}
+      >
+        <View style={{
+          position: 'absolute', justifyContent: 'center', alignItems: 'center',
+          height: height, width: width, padding: 16
+        }}>
+          <View style={{
+            width: '100%', backgroundColor: 'white',
+            shadowColor: 'rgb(160,160,160)', shadowOpacity: 0.7, shadowRadius: 10, shadowOffset: {
+              height: 10, width: 0
+            }, borderRadius: 10
+          }}>
+            <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'flex-end', padding: 15 }}>
+              <MaterialCommunityIcons name='close' size={28} onPress={() => {
+                setShowModal(false)
+              }} />
+            </TouchableOpacity>
+            <Text style={{ textAlign: 'center', fontSize: 18, marginBottom: 20 }}>Membership Family Code</Text>
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <TextInput
+                placeholder='XXXX-XXXX-XXXX-XXXX'
+                placeholderTextColor={'rgb(130,130,130)'}
+                value={MembershipFamilyCode}
+                onChangeText={text => setMembershipFamilyCode(text)}
+                style={{
+                  width: '80%', backgroundColor: 'rgb(245,245,245)', height: 40,
+                  borderRadius: 20, paddingLeft: 20, paddingRight: 20, textAlign: 'center'
+                  , marginBottom: 5,
+                }} />
+            </View>
+            {
+              MemberShipFamilyCodeError === true &&
+              <Text style={{
+                textAlign: 'center', color: 'gray', marginTop: 20,
+                marginBottom: 20
+              }}><Text style={{ color: 'red' }}>Incorrect code </Text> Please try again.</Text>
+            }
+            <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
+              <TouchableOpacity onPress={() => {
+
+              }} style={{
+                justifyContent: 'center', alignItems: 'center', backgroundColor: '#FB444B',
+                width: '80%', height: 40, borderRadius: 20, marginBottom: 30
+              }}>
+                <Text style={{ color: 'white', fontSize: 15, }}
+                >ADD FAMILY</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+
       <View style={{ flex: 2, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
         <Image source={userImage} style={{ height: 100, width: 100, borderRadius: 50, marginBottom: 10 }} />
         <Text style={{ margin: 7 }}>Hi, Nirmiti Gaitonde</Text>
@@ -66,9 +133,11 @@ const MemberShipInfo = () => {
             <Entypo name="chevron-with-circle-right" size={28} color="white" />
           </View>
         </View>
-        <View style={{ alignItems: 'center', justifyContent: 'center',marginTop:20 }}>
+        <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 20 }}>
           <Text style={{ fontSize: 16, }}>Have a family code?</Text>
-          <Text style={{color:'red',textDecorationLine:'underline',fontSize:16,marginTop:10}}>Apply it here</Text>
+          <Text onPress={() => {
+            setShowModal(true)
+          }} style={{ color: 'red', textDecorationLine: 'underline', fontSize: 16, marginTop: 10 }}>Apply it here</Text>
         </View>
       </View>
     </View>

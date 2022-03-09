@@ -4,12 +4,12 @@ import testImage from '../assets/favicon.png';
 import tub from '../assets/tub.png';
 import { Ionicons, MaterialCommunityIcons, MaterialIcons, SimpleLineIcons } from '@expo/vector-icons'
 
-const WishList = () => {
+const WishList = ({navigation}) => {
     return (
         <ScrollView>
             <View style={{ padding: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.goBack()} >
                         <Ionicons name='chevron-back-sharp' size={24} style={{ color: 'rgb(100,100,100)' }} />
                     </TouchableOpacity>
                     <Text style={{ fontWeight: 'bold', fontSize: 17, marginLeft: 10 }}>Wishlist</Text>

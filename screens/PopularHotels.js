@@ -7,9 +7,12 @@ import { ScrollView } from 'react-native-gesture-handler';
 const PopularHotels = () => {
     return (
         <ScrollView>
-            <Text style={{ margin: 10, fontWeight: 'bold', fontSize: 25, marginBottom: 5 }}>Popular Hotels</Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center', padding:15 }}>
-                <Octicons name='verified' size={15} style={{ color: '#64B657',marginRight:10 }} />
+            <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                <Text style={{ margin: 10, fontWeight: 'bold', fontSize: 25, marginBottom: 5 }}>Popular Hotels</Text>
+                <MaterialCommunityIcons name="close" size={24} color="black" style={{padding:10}}/>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', padding: 15 }}>
+                <Octicons name='verified' size={15} style={{ color: '#64B657', marginRight: 10 }} />
                 <Text>Free for members</Text>
             </View>
             <View>
@@ -115,6 +118,7 @@ const PopularHotels = () => {
                     </View>
                 </View>
             </View>
+            <View style={{ height: 200 }}></View>
         </ScrollView>
 
     )

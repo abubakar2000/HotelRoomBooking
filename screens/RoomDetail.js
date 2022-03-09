@@ -3,12 +3,14 @@ import React from 'react'
 import roomImage from '../assets/tub.png'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-const RoomDetail = () => {
+const RoomDetail = ({navigation}) => {
   return (
     <ScrollView style={{ paddingLeft: 10, paddingRight: 10 }}>
-      <View style={{ alignItems: 'center' }}>
+      <TouchableOpacity 
+      onPress={() => navigation.navigate('Rooms')}
+      style={{ alignItems: 'center' }}>
         <Image source={roomImage} style={[styles.roomImage]} />
-      </View>
+      </TouchableOpacity>
       <View style={{ padding: 10 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 15, alignItems: "center" }}>
           <View style={{ flexDirection: 'column' }}>
@@ -104,8 +106,9 @@ const RoomDetail = () => {
 
         <View style={{ flexDirection: 'row' }}>
           <TouchableOpacity style={{ flex: 1, minHeight: 65, justifyContent: 'center', alignItems: 'center' }}>
-            <View style={{ borderColor: 'rgb(220,220,220)', borderWidth: 1, borderRadius: 30, height: 50, width: '95%' }}>
-
+            <View style={{ borderColor: 'rgb(220,220,220)', borderWidth: 1, borderRadius: 30, height: 50, width: '95%',
+          justifyContent:'center',alignItems:'center' }}>
+              <MaterialCommunityIcons name='heart-outline' color={'rgb(130,130,130)'} size={25}/>
             </View>
           </TouchableOpacity>
           <TouchableOpacity style={{ flex: 3, minHeight: 15, justifyContent: 'center', alignItems: 'center' }}>

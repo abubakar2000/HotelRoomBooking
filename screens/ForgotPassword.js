@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput } from 
 import React, { useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 
-const ForgotPassword = () => {
+const ForgotPassword = ({navigation}) => {
     const [EmailAddress, setEmailAddress] = useState("");
     const [Error, setError] = useState(true);
     return (
@@ -10,7 +10,7 @@ const ForgotPassword = () => {
             <View style={{ flexDirection: 'row', alignItems: 'center', height: 50, }}>
                 <Text style={{ width: '100%', textAlign: 'center', alignItems: 'center', fontSize: 18, fontWeight: 'bold' }}>Forgot Password</Text>
                 <TouchableOpacity style={{ position: 'absolute', marginLeft: 10, }}
-                    onPress={() => { }}
+                    onPress={() => navigation.goBack()}
                 >
                     <MaterialIcons name='arrow-back-ios' size={24} />
                 </TouchableOpacity>

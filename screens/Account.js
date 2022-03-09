@@ -117,9 +117,11 @@ function Account({ navigation }) {
         }
         {
           ProfileImage === "" &&
-          <View style={[styles.profileImage, { backgroundColor: 'rgb(240,240,240)' }]} >
+          <TouchableOpacity
+          onPress={() => setProfileImage(image)}
+          style={[styles.profileImage, { backgroundColor: 'rgb(240,240,240)' }]} >
             <Ionicons name='ios-camera-outline' size={40} style={[{ color: 'rgb(130,130,130)' }]} />
-          </View>
+          </TouchableOpacity>
         }
       </View>
 

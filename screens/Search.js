@@ -3,7 +3,9 @@ import React, { useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import testImage from '../assets/favicon.png';
-// import ActionSheet from '../components/ActionSheet';
+import DropDownPicker from 'react-native-dropdown-picker';
+import ActionSheet from '../components/ActionSheet';
+import BarFab from '../components/BarFab';
 
 const Search = ({ navigation }) => {
   const [Recents, setRecents] = useState([
@@ -35,12 +37,16 @@ const Search = ({ navigation }) => {
 
             <TextInput style={{ flex: 5, paddingLeft: 20 }}
               placeholder="Search" placeholderTextColor={'rgb(130,130,130)'} />
+
+
             <TouchableOpacity
               onPress={() => {
                 if (SearchParam === 'Hotels') {
                   setSearchParams('Deals')
-                } else {
-                  setSearchParams('Hotels')
+                } else if (SearchParam === "Deals") {
+                  setSearchParams('')
+                } else if (SearchParam === '') {
+                  setSearchParams("Hotels")
                 }
               }}
               style={{
@@ -57,91 +63,111 @@ const Search = ({ navigation }) => {
             <MaterialIcons name="close" size={24} color="white" />
           </TouchableOpacity>
         </View>
-        <View style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20, paddingBottom: 10 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Recent</Text>
-        </View>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', paddingLeft: 10, paddingRight: 10 }}>
-          {
-            Recents.map(recent => {
-              return (
-                <TouchableOpacity key={recent} style={{
-                  borderColor: 'rgb(200,200,200)', borderWidth: 1, paddingLeft: 20,
-                  paddingRight: 20, paddingTop: 10, paddingBottom: 10, borderRadius: 20,
-                  margin: 3.5
-                }}>
-                  <Text style={{ color: 'rgb(130,130,130)' }}>{recent}</Text>
-                </TouchableOpacity>
-              );
-            })
-          }
-        </View>
-        <LinearGradient style={{ width: '100%', marginTop: 15, flexDirection: 'column' }}
-          colors={['#E00006', '#FB8B97']}
-          start={[0, 1]} end={[1, 0]}
-        >
-          <View style={{ flex: 1, justifyContent: 'center', paddingLeft: 20, paddingTop: 20, paddingBottom: 8 }}>
+
+
+
+        {(SearchParam !== 'Hotels' && SearchParam !== "Deals") &&
+          <View>
+            <View style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20, paddingBottom: 10 }}>
+              <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Recent</Text>
+            </View>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', paddingLeft: 10, paddingRight: 10 }}>
+              {
+                Recents.map(recent => {
+                  return (
+                    <TouchableOpacity key={recent} style={{
+                      borderColor: 'rgb(200,200,200)', borderWidth: 1, paddingLeft: 20,
+                      paddingRight: 20, paddingTop: 10, paddingBottom: 10, borderRadius: 20,
+                      margin: 3.5
+                    }}>
+                      <Text style={{ color: 'rgb(130,130,130)' }}>{recent}</Text>
+                    </TouchableOpacity>
+                  );
+                })
+              }
+            </View>
+            <LinearGradient style={{ width: '100%', marginTop: 15, flexDirection: 'column' }}
+              colors={['#E00006', '#FB8B97']}
+              start={[0, 1]} end={[1, 0]}
+            >
+              <View style={{ flex: 1, justifyContent: 'center', paddingLeft: 20, paddingTop: 20, paddingBottom: 8 }}>
+                <View>
+                  <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold' }}>Save on top brands</Text>
+                  <Text style={{ color: 'white', marginTop: 5, }}>Save big on most popular brands with us</Text>
+                </View>
+              </View>
+              <ScrollView style={{ flex: 3, marginBottom: 10 }} horizontal={true}>
+                <View style={{ width: 10 }}></View>
+                {
+                  TopBrands.map(brand => {
+                    return (
+                      <View key={brand}
+                        style={{
+                          height: 100, width: 100, backgroundColor: 'blue', borderRadius: 10,
+                          marginBottom: 10, marginLeft: 4, marginRight: 4, marginTop: 5, shadowColor: 'black', shadowOffset: {
+                            height: 0, width: 2
+                          }, shadowOpacity: 0.5, shadowRadius: 5
+                        }}>
+
+                      </View>
+                    );
+                  })
+                }
+              </ScrollView>
+            </LinearGradient>
             <View>
-              <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold' }}>Save on top brands</Text>
-              <Text style={{ color: 'white', marginTop: 5, }}>Save big on most popular brands with us</Text>
+              <Text style={{ fontWeight: 'bold', fontSize: 18, marginTop: 20, marginBottom: 10, marginLeft: 20, marginRight: 20 }}>Your Deals</Text>
+              <ScrollView horizontal={true} >
+                <View style={{ width: 10 }}></View>
+                {
+                  YourDeals.map(deal => {
+                    return (
+                      <View key={deal} style={{
+                        height: 130, width: 200, backgroundColor: 'white', borderRadius: 10,
+                        shadowColor: 'gray',
+                        shadowOffset: {
+                          width: 2,
+                          height: 2
+                        },
+                        shadowOpacity: 0.5,
+                        shadowRadius: 5,
+                        elevation: 10,
+                        marginBottom: 15,
+                        marginTop: 5,
+                        marginLeft: 3,
+                        marginRight: 3
+                      }}>
+                        <View style={{ height: 70, width: 200, backgroundColor: 'red', borderRadius: 10 }}>
+
+                        </View>
+                        <View style={{ height: 60, width: 200, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+                          <Image source={testImage} style={{ height: 50, width: 50, borderRadius: 25, backgroundColor: 'red' }} />
+                          <Text style={{ width: 100, fontWeight: 'bold' }}>Flat 35% OFF On All Orders</Text>
+                        </View>
+                      </View>
+                    );
+                  })
+                }
+
+              </ScrollView>
             </View>
           </View>
-          <ScrollView style={{ flex: 3, marginBottom: 10 }} horizontal={true}>
-            <View style={{ width: 10 }}></View>
-            {
-              TopBrands.map(brand => {
-                return (
-                  <View key={brand}
-                    style={{
-                      height: 100, width: 100, backgroundColor: 'blue', borderRadius: 10,
-                      marginBottom: 10, marginLeft: 4, marginRight: 4, marginTop: 5, shadowColor: 'black', shadowOffset: {
-                        height: 0, width: 2
-                      }, shadowOpacity: 0.5, shadowRadius: 5
-                    }}>
-
-                  </View>
-                );
-              })
-            }
-          </ScrollView>
-        </LinearGradient>
-        <View>
-          <Text style={{ fontWeight: 'bold', fontSize: 18, marginTop: 20, marginBottom: 10, marginLeft: 20, marginRight: 20 }}>Your Deals</Text>
-          <ScrollView horizontal={true} >
-            <View style={{ width: 10 }}></View>
-            {
-              YourDeals.map(deal => {
-                return (
-                  <View key={deal} style={{
-                    height: 130, width: 200, backgroundColor: 'white', borderRadius: 10,
-                    shadowColor: 'gray',
-                    shadowOffset: {
-                      width: 2,
-                      height: 2
-                    },
-                    shadowOpacity: 0.5,
-                    shadowRadius: 5,
-                    elevation: 10,
-                    marginBottom: 15,
-                    marginTop: 5,
-                    marginLeft: 3,
-                    marginRight: 3
-                  }}>
-                    <View style={{ height: 70, width: 200, backgroundColor: 'red', borderRadius: 10 }}>
-
-                    </View>
-                    <View style={{ height: 60, width: 200, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-                      <Image source={testImage} style={{ height: 50, width: 50, borderRadius: 25, backgroundColor: 'red' }} />
-                      <Text style={{ width: 100, fontWeight: 'bold' }}>Flat 35% OFF On All Orders</Text>
-                    </View>
-                  </View>
-                );
-              })
-            }
-
-          </ScrollView>
-        </View>
+        }
+        {
+          SearchParam === "Hotels" &&
+          <View style={{height:900,width:'100%',}}>
+            <Text>Hotels</Text>
+          </View>
+        }
+        {
+          SearchParam === "Deals" &&
+          <View style={{height:900,width:'100%'}}>
+            <Text>Deals</Text>
+          </View>
+        }
       </ScrollView>
-      {/* <ActionSheet /> */}
+      <BarFab />
+      <ActionSheet />
     </>
   )
 }

@@ -1,9 +1,10 @@
 import { Image, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import { AntDesign, Feather, FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons'
+import { AntDesign, Feather, FontAwesome5, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 import testImage from '../assets/favicon.png';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
+import BarFab from '../components/BarFab';
 
 const Home = ({ navigation }) => {
   const [Options, setOptions] = useState([
@@ -13,18 +14,13 @@ const Home = ({ navigation }) => {
     1, 2, 3, 4, 5
   ]);
   const [Notifications, setNotifications] = useState([
-   
+
   ])
-  /**
-   *  {
-      title: () => <Text>Merry Christmas! Get <Text style={{ color: 'red' }}>50% Off</Text> on Pizza</Text>,
-      visibleText: 'Oven Story is offering discount on all ranges of pizza.'
-    }
-   */
   const [ShowNotifications, setShowNotifications] = useState(false);
   const { height, width } = Dimensions.get('screen');
   return (
     <ScrollView>
+
       <View style={{
         minHeight: 50, backgroundColor: '#FA454B', justifyContent: 'space-between',
         flexDirection: 'row', alignItems: 'center', paddingLeft: 15, paddingRight: 15
@@ -91,14 +87,15 @@ const Home = ({ navigation }) => {
           }
           {
             Notifications.length <= 0 &&
-            <View style={{justifyContent:'center',alignItems:'center',height:'70%'}}>
-              <FontAwesome5 name="smile" size={35} color="rgb(200,200,200)"/> 
-              <Text style={{color:'rgb(200,200,200)',marginTop:10}}>No Notifications</Text>
+            <View style={{ justifyContent: 'center', alignItems: 'center', height: '70%' }}>
+              <FontAwesome5 name="smile" size={35} color="rgb(200,200,200)" />
+              <Text style={{ color: 'rgb(200,200,200)', marginTop: 10 }}>No Notifications</Text>
             </View>
           }
 
         </View>
       </Modal>
+
       <TouchableOpacity style={{
         borderWidth: 1, borderColor: 'rgb(220,220,220)',
         justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row',
@@ -107,7 +104,7 @@ const Home = ({ navigation }) => {
         navigation.navigate('Search')
       }}>
         <AntDesign name='search1' size={25} style={{ flex: 1 }} />
-        <Text style={{ flex: 6,color:'rgb(130,130,130)' }} 
+        <Text style={{ flex: 6, color: 'rgb(130,130,130)' }}
           placeholderTextColor={'rgb(130,130,130)'} >Hotels, Deals, Restaurants, etc</Text>
       </TouchableOpacity>
       <View style={{ width: '100%', paddingLeft: 15, paddingRight: 15 }}>
@@ -139,7 +136,12 @@ const Home = ({ navigation }) => {
       <View style={{ borderWidth: 0.5, margin: 15, borderColor: 'rgb(220,220,220)' }}>
       </View>
       <View style={{ paddingLeft: 10, paddingRight: 10 }}>
-        <Text style={{ fontWeight: 'bold', fontSize: 17, padding: 15 }}>Deals new you</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Text style={{ fontWeight: 'bold', fontSize: 17, padding: 15 }}>Deals near you</Text>
+          <TouchableOpacity style={{ backgroundColor: 'rgb(200,200,200)', borderRadius: 20, padding: 3 }}>
+            <MaterialIcons name='navigate-next' size={26} />
+          </TouchableOpacity>
+        </View>
         <ScrollView horizontal={true} >
           <View style={{ width: 5 }}></View>
           <View style={{
@@ -264,6 +266,8 @@ const Home = ({ navigation }) => {
           </View>
         </ScrollView>
       </View>
+
+      <BarFab />
     </ScrollView>
   )
 }

@@ -2,12 +2,13 @@
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import React from 'react';
 import DrawerApp from './routes/Drawer';
+
 const App = () => {
   return (
     <View style={[styles.AppContainer]}>
-      <SafeAreaView style={[styles.SafeAppContainer]}>
+      <View style={[styles.SafeAppContainer]}>
         <DrawerApp />
-      </SafeAreaView>
+      </View>
     </View>
   );
 };
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
     paddingTop:25
   },
   SafeAppContainer: {
+    paddingTop:20,
     height: '100%',
     width: '100%',
   },
