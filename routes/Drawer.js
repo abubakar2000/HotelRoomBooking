@@ -97,7 +97,7 @@ export default function DrawerApp() {
           swipeEnabled:true,
         }}
         drawerContent={({ navigation }) => <DrawerMenu navigation={navigation} />}
-        initialRouteName="Home">
+        initialRouteName="Search">
 
         <Drawer.Screen options={{ headerShown: false }} name="Root" component={BarFab} />
         <Drawer.Screen options={{ headerShown: false }} name="Search" component={Search} />

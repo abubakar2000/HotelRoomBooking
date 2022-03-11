@@ -34,73 +34,73 @@ const Z = ({ ch, handle }) => {
 
 const BarFab = ({navigation}) => {
     return (
+        <></>
+        // <t.Navigator
+        //     screenOptions={
+        //         {
+        //             tabBarShowLabel: true,
+        //             headerShadowVisible: false,
+        //             header: () => <></>,
+        //             tabBarStyle: {
+        //                 position: 'absolute',
+        //                 borderRadius: 40,
+        //                 elevation: 1,
+        //                 backgroundColor: 'white',
+        //                 left: 15,
+        //                 right: 15,
+        //                 bottom: 25,
+        //                 ...state.state,
+        //                 height: 70,
+        //             }
+        //         }
+        //     }
+        // >
 
-        <t.Navigator
-            screenOptions={
-                {
-                    tabBarShowLabel: true,
-                    headerShadowVisible: false,
-                    header: () => <></>,
-                    tabBarStyle: {
-                        position: 'absolute',
-                        borderRadius: 40,
-                        elevation: 1,
-                        backgroundColor: 'white',
-                        left: 15,
-                        right: 15,
-                        bottom: 25,
-                        ...state.state,
-                        height: 70,
-                    }
-                }
-            }
-        >
-
-            <t.Screen options={{
-                tabBarShowLabel: false,
-                tabBarIcon: ({ focused }) => (
-                    <View style={{ justifyContent: 'center', alignItems: 'center', top: 15, }}>
-                        <Ionicons name="ios-compass-sharp" size={30} color={focused ? 'black' : 'rgb(200,200,200)'} />
-                        <Text style={{ fontSize: 10, color: focused ? 'black' : 'rgb(200,200,200)' }}>Explore</Text>
-                    </View>
-                )
-            }} name="Explore" component={Home} />
-            <t.Screen options={{
-                tabBarShowLabel: false,
-                tabBarIcon: ({ focused }) => (
-                    <View style={{ justifyContent: 'center', alignItems: 'center', top: 15 }}>
-                        <Ionicons name="ios-compass-sharp" size={30} color={focused ? 'black' : 'rgb(200,200,200)'} />
-                        <Text style={{ fontSize: 10, color: focused ? 'black' : 'rgb(200,200,200)' }}>Category</Text>
-                    </View>
-                )
-            }} name="Category" component={PlansList} />
-            <t.Screen options={{
-                tabBarShowLabel: false,
-                tabBarIcon: ({ focused }) => (
-                    <>
-                    </>
-                ),
-                tabBarButton: (props) => <Z {...props} />
-            }} name="home" component={Rooms} />
-            <t.Screen options={{
-                tabBarShowLabel: false,
-                tabBarIcon: ({ focused }) => (
-                    <View style={{ justifyContent: 'center', alignItems: 'center', top: 15 }}>
-                        <Ionicons name="ios-compass-sharp" size={30} color={focused ? 'black' : 'rgb(200,200,200)'} />
-                        <Text style={{ fontSize: 10, color: focused ? 'black' : 'rgb(200,200,200)' }}>Membership</Text>
-                    </View>
-                )
-            }} name="Membership" component={MemberShipInfo} />
-            <t.Screen options={{
-                    tabBarShowLabel: false,
-                    tabBarIcon: ({ focused }) => (
-                        <View style={{ justifyContent: 'center', alignItems: 'center', top: 15 }}>
-                            <Ionicons name="ios-compass-sharp" size={30} color={focused ? 'black' : 'rgb(200,200,200)'} />
-                            <Text style={{ fontSize: 10, color: focused ? 'black' : 'rgb(200,200,200)' }}>Call us</Text>
-                        </View>
-                    )
-                }} name="Call us" component={TalkToUs} />
-        </t.Navigator>
+        //     <t.Screen options={{
+        //         tabBarShowLabel: false,
+        //         tabBarIcon: ({ focused }) => (
+        //             <View style={{ justifyContent: 'center', alignItems: 'center', top: 15, }}>
+        //                 <Ionicons name="ios-compass-sharp" size={30} color={focused ? 'black' : 'rgb(200,200,200)'} />
+        //                 <Text style={{ fontSize: 10, color: focused ? 'black' : 'rgb(200,200,200)' }}>Explore</Text>
+        //             </View>
+        //         )
+        //     }} name="Explore" component={WishList} />
+        //     <t.Screen options={{
+        //         tabBarShowLabel: false,
+        //         tabBarIcon: ({ focused }) => (
+        //             <View style={{ justifyContent: 'center', alignItems: 'center', top: 15 }}>
+        //                 <Ionicons name="ios-compass-sharp" size={30} color={focused ? 'black' : 'rgb(200,200,200)'} />
+        //                 <Text style={{ fontSize: 10, color: focused ? 'black' : 'rgb(200,200,200)' }}>Category</Text>
+        //             </View>
+        //         )
+        //     }} name="Category" component={PlansList} />
+        //     <t.Screen options={{
+        //         tabBarShowLabel: false,
+        //         tabBarIcon: ({ focused }) => (
+        //             <>
+        //             </>
+        //         ),
+        //         tabBarButton: (props) => <Z {...props} />
+        //     }} name="home" component={Rooms} />
+        //     <t.Screen options={{
+        //         tabBarShowLabel: false,
+        //         tabBarIcon: ({ focused }) => (
+        //             <View style={{ justifyContent: 'center', alignItems: 'center', top: 15 }}>
+        //                 <Ionicons name="ios-compass-sharp" size={30} color={focused ? 'black' : 'rgb(200,200,200)'} />
+        //                 <Text style={{ fontSize: 10, color: focused ? 'black' : 'rgb(200,200,200)' }}>Membership</Text>
+        //             </View>
+        //         )
+        //     }} name="Membership" component={MemberShipInfo} />
+        //     <t.Screen options={{
+        //             tabBarShowLabel: false,
+        //             tabBarIcon: ({ focused }) => (
+        //                 <View style={{ justifyContent: 'center', alignItems: 'center', top: 15 }}>
+        //                     <Ionicons name="ios-compass-sharp" size={30} color={focused ? 'black' : 'rgb(200,200,200)'} />
+        //                     <Text style={{ fontSize: 10, color: focused ? 'black' : 'rgb(200,200,200)' }}>Call us</Text>
+        //                 </View>
+        //             )
+        //         }} name="Call us" component={TalkToUs} />
+        // </t.Navigator>
 
     );
 }

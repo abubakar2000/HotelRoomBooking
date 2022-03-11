@@ -2,16 +2,18 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput } from 
 import React, { useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 
-const TalkToUs = () => {
+const TalkToUs = ({navigation}) => {
     const [Name, setName] = useState("");
     const [MobileNo, setMobileNo] = useState("");
     const [YourConcern, setYourConcern] = useState("")
     return (
-        <ScrollView style={{ paddingLeft: 20, paddingRight: 20, }}>
+        <ScrollView style={{ paddingLeft: 15, paddingRight: 20, }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', height: 50, }}>
                 <Text style={{ width: '100%', textAlign: 'center', alignItems: 'center', fontSize: 18, fontWeight: 'bold' }}>Redeem History</Text>
-                <TouchableOpacity style={{ position: 'absolute', marginLeft: 10, }}
-                    onPress={() => { }}
+                <TouchableOpacity style={{ position: 'absolute', marginLeft: 0, }}
+                    onPress={() => { 
+                        navigation.goBack();
+                    }}
                 >
                     <MaterialIcons name='arrow-back-ios' size={24} />
                 </TouchableOpacity>

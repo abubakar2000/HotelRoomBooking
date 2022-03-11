@@ -19,7 +19,7 @@ const Search = ({ navigation }) => {
     1, 2, 3, 4, 5
   ])
 
-  const [SearchParam, setSearchParams] = useState('Hotels')
+  const [SearchParam, setSearchParams] = useState('')
   return (
     <>
       <ScrollView>
@@ -66,7 +66,7 @@ const Search = ({ navigation }) => {
 
 
 
-        {(SearchParam !== 'Hotels' && SearchParam !== "Deals") &&
+        {(SearchParam !== 'Hotels' && SearchParam !== "Deals" || true) &&
           <View>
             <View style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20, paddingBottom: 10 }}>
               <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Recent</Text>
@@ -154,14 +154,14 @@ const Search = ({ navigation }) => {
           </View>
         }
         {
-          SearchParam === "Hotels" &&
-          <View style={{height:900,width:'100%',}}>
+          SearchParam === "Hotels" && false &&
+          <View style={{ height: 900, width: '100%', }}>
             <Text>Hotels</Text>
           </View>
         }
         {
-          SearchParam === "Deals" &&
-          <View style={{height:900,width:'100%'}}>
+          SearchParam === "Deals" && false &&
+          <View style={{ height: 900, width: '100%' }}>
             <Text>Deals</Text>
           </View>
         }
