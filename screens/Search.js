@@ -6,6 +6,8 @@ import testImage from '../assets/favicon.png';
 import DropDownPicker from 'react-native-dropdown-picker';
 import ActionSheet from '../components/ActionSheet';
 import BarFab from '../components/BarFab';
+import PopularHotels from './PopularHotels';
+import { Ionicons } from '@expo/vector-icons';
 
 const Search = ({ navigation }) => {
   const [Recents, setRecents] = useState([
@@ -19,10 +21,10 @@ const Search = ({ navigation }) => {
     1, 2, 3, 4, 5
   ])
 
-  const [SearchParam, setSearchParams] = useState('')
+  const [SearchParam, setSearchParams] = useState('filter')
   return (
     <>
-      <ScrollView>
+      <View>
         <View style={{
           backgroundColor: "#FA454B", width: '100%', minHeight: 100,
           justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center',
@@ -44,8 +46,8 @@ const Search = ({ navigation }) => {
                 if (SearchParam === 'Hotels') {
                   setSearchParams('Deals')
                 } else if (SearchParam === "Deals") {
-                  setSearchParams('')
-                } else if (SearchParam === '') {
+                  setSearchParams('filter')
+                } else if (SearchParam === 'filter') {
                   setSearchParams("Hotels")
                 }
               }}
@@ -66,8 +68,8 @@ const Search = ({ navigation }) => {
 
 
 
-        {(SearchParam !== 'Hotels' && SearchParam !== "Deals" || true) &&
-          <View>
+        {(SearchParam !== 'Hotels' && SearchParam !== "Deals") &&
+          <ScrollView>
             <View style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20, paddingBottom: 10 }}>
               <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Recent</Text>
             </View>
@@ -86,7 +88,7 @@ const Search = ({ navigation }) => {
                 })
               }
             </View>
-            <LinearGradient style={{ width: '100%', marginTop: 15, flexDirection: 'column' }}
+            <LinearGradient style={{ width: '100%', marginTop: 15, flexDirection: 'column', }}
               colors={['#E00006', '#FB8B97']}
               start={[0, 1]} end={[1, 0]}
             >
@@ -151,22 +153,48 @@ const Search = ({ navigation }) => {
 
               </ScrollView>
             </View>
-          </View>
+          </ScrollView>
         }
         {
-          SearchParam === "Hotels" && false &&
+          SearchParam === "Hotels" &&
           <View style={{ height: 900, width: '100%', }}>
-            <Text>Hotels</Text>
+            <PopularHotels navigation={navigation} showBar={false} showCross={false} />
           </View>
         }
         {
-          SearchParam === "Deals" && false &&
+          SearchParam === "Deals" &&
           <View style={{ height: 900, width: '100%' }}>
             <Text>Deals</Text>
           </View>
         }
-      </ScrollView>
-      <BarFab />
+      </View>
+      {SearchParam === "Hotels" &&
+        <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: 'white' }}>
+          <View style={{ flexDirection: 'row', }}>
+            <View style={{ flex: 1, padding: 10 }}>
+              <TouchableOpacity style={{
+                borderWidth: 1, borderRadius: 30, minHeight: 60, width: '100%',
+                borderColor: 'rgb(220,220,220)', justifyContent: 'center', alignItems: 'center'
+              }}>
+                <Ionicons name='ios-options-outline' size={30} color={"rgb(100,100,100)"} />
+              </TouchableOpacity>
+            </View>
+            <View style={{ flex: 3, padding: 10 }}>
+              <View style={{
+                borderWidth: 1, borderRadius: 30, minHeight: 60, width: '100%',
+                borderColor: 'rgb(220,220,220)', flexDirection: 'row', alignItems: 'center'
+              }}>
+                <TouchableOpacity style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
+                  <Text style={{ textAlign: 'center' }}>Category</Text>
+                </TouchableOpacity>
+                <View style={{ borderWidth: 0.5, height: '70%', borderColor: 'rgb(220,220,220)' }}></View>
+                <TouchableOpacity style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
+                  <Text style={{ textAlign: 'center' }}>Filter</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View>}
       <ActionSheet />
     </>
   )

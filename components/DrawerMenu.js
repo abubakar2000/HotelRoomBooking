@@ -4,6 +4,7 @@ import React from 'react';
 
 import { AntDesign, EvilIcons, Feather, FontAwesome, FontAwesome5, Fontisto, Ionicons, MaterialCommunityIcons, MaterialIcons, SimpleLineIcons } from '@expo/vector-icons';
 import profilePicture from '../assets/10.jpg'
+import { ImageBackground } from 'react-native';
 
 
 const DrawerMenu = ({ navigation }) => {
@@ -25,56 +26,62 @@ const DrawerMenu = ({ navigation }) => {
                 </TouchableOpacity>
                 <View style={{ borderBottomColor: 'rgb(230,230,230)', borderBottomWidth: 1, marginTop: 10, marginBottom: 10 }}></View>
                 <TouchableOpacity style={[styles.navTab]} onPress={() => onNavigate('MemberShipOnboarding')}>
-                    <Feather style={[styles.tabIco]} name='pocket' size={22} />
+                    <ImageBackground source={require('../assets/membership.png')} style={[styles.tabIco]} ></ImageBackground>
                     <Text style={[styles.navTabText]}>Your Membership</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.navTab]} onPress={() => onNavigate('WishList')}>
-                    <EvilIcons style={[styles.tabIco]} name='heart' size={22} />
+                    <ImageBackground source={require('../assets/wishlist.png')} style={[styles.tabIco]} ></ImageBackground>
                     <Text style={[styles.navTabText]}>Your Wishlist</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.navTab]} onPress={() => onNavigate('Home')}>
-                    <AntDesign style={[styles.tabIco]} name='linechart' size={22} />
+                    <ImageBackground source={require('../assets/redeem.png')} style={[styles.tabIco]} ></ImageBackground>
                     <Text style={[styles.navTabText]}>Redeem History</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.navTab]} onPress={() => onNavigate('Home')}>
-                    <MaterialIcons style={[styles.tabIco]} name='category' size={22} />
+                    <ImageBackground source={require('../assets/categories.png')} style={[styles.tabIco]} ></ImageBackground>
                     <Text style={[styles.navTabText]}>Category</Text>
                 </TouchableOpacity>
                 <View style={{ borderBottomColor: 'rgb(230,230,230)', borderBottomWidth: 1, marginTop: 10, marginBottom: 10 }}></View>
                 <TouchableOpacity style={[styles.navTab]} onPress={() => onNavigate('Home')}>
-                    <Ionicons style={[styles.tabIco]} name='briefcase-outline' size={22} />
+                    <ImageBackground source={require('../assets/businesswithus.png')} style={[styles.tabIco]} ></ImageBackground>
                     <Text style={[styles.navTabText]}>Business with us</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.navTab]} onPress={() => onNavigate('Settings')}>
-                    <Ionicons style={[styles.tabIco]} name='settings-outline' size={22} />
+                    <ImageBackground source={require('../assets/settings.png')} style={[styles.tabIco]} ></ImageBackground>
                     <Text style={[styles.navTabText]}>Setting</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.navTab]} onPress={() => onNavigate('Home')}>
-                    <AntDesign style={[styles.tabIcoGold]} name='star' size={22} />
+                    <ImageBackground source={require('../assets/rateus.png')} style={[styles.tabIco]} ></ImageBackground>
                     <Text style={[styles.navTabText]}>Rate us</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.navTab]} onPress={() => onNavigate('Home')}>
-                    <AntDesign style={[styles.tabIco]} name='checksquareo' size={22} />
+                    <ImageBackground source={require('../assets/privacypol.png')} style={[styles.tabIco]} ></ImageBackground>
                     <Text style={[styles.navTabText]}>Privacy Policy</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.navTab]} onPress={() => onNavigate('Home')}>
-                    <Ionicons style={[styles.tabIco]} name='chatbubble-ellipses-outline' size={22} />
+                    <ImageBackground source={require('../assets/talktous.png')} style={[styles.tabIco]} ></ImageBackground>
                     <Text style={[styles.navTabText]}>Talk to us</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => onNavigate('MemberShipInfo')} style={{
-                    backgroundColor: '#FF4449', minHeight: 40, width: '100%',
-                    marginTop: 20, borderRadius: 10, padding: 20
+                    minHeight: 40,
+                    marginTop: 20, borderRadius: 10, justifyContent: 'center', alignItems: 'center'
                 }}>
-                    <Text style={{ color: 'white', fontWeight: '600', fontSize: 17 }}>Become a member and</Text>
-                    <Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Save More</Text>
-                    <View style={{ height: 20 }}></View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                        <View>
-                            <Text style={{ color: 'white', fontWeight: '600', fontSize: 15 }}>Deals worth of</Text>
-                            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 23 }}>₹1 lakh</Text>
+                    <ImageBackground source={require('../assets/wavyred.png')}
+                        style={{ width: '100%', padding: 20, minHeight: 40 }}
+                        resizeMode="cover"
+                        imageStyle={{ borderRadius: 10, }}
+                    >
+                        <Text style={{ color: 'white', fontWeight: '600', fontSize: 17 }}>Become a member and</Text>
+                        <Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Save More</Text>
+                        <View style={{ height: 20 }}></View>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                            <View>
+                                <Text style={{ color: 'white', fontWeight: '600', fontSize: 15 }}>Deals worth of</Text>
+                                <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 23 }}>₹1 lakh</Text>
+                            </View>
+                            <MaterialIcons style={[styles.tabIco2]} name='navigate-next' size={30} />
                         </View>
-                        <MaterialIcons style={[styles.tabIco2]} name='navigate-next' size={30} />
-                    </View>
+                    </ImageBackground>
 
                 </TouchableOpacity>
             </View>
@@ -87,7 +94,7 @@ export default DrawerMenu;
 const styles = StyleSheet.create({
     container: {
         padding: 20,
-        paddingBottom:50
+        paddingBottom: 50
     },
     profilePicture: {
         height: 65,
@@ -99,7 +106,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingBottom: 15,
-        marginTop:30
+        marginTop: 30
     },
     horiContainer: {
         flexDirection: 'column',
@@ -116,7 +123,9 @@ const styles = StyleSheet.create({
     },
     tabIco: {
         margin: 15,
-        color: 'rgb(170,170,170)'
+        color: 'rgb(170,170,170)',
+        height: 20,
+        width: 20
     },
     tabIcoGold: {
         margin: 15,

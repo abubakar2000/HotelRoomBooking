@@ -18,7 +18,7 @@ function Account({ navigation }) {
   const [MembershipFamilyCode, setMembershipFamilyCode] = useState("")
   const [MemberShipFamilyCodeError, setMemberShipFamilyCodeError] = useState(false)
 
-  const [ShowModal, setShowModal] = useState(true)
+  const [ShowModal, setShowModal] = useState(false)
 
   const { height, width } = Dimensions.get('screen')
 
@@ -83,7 +83,7 @@ function Account({ navigation }) {
             }
             <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
               <TouchableOpacity onPress={() => {
-
+                setMemberShipFamilyCodeError(MembershipFamilyCode === "" ? true : false)
               }} style={{
                 justifyContent: 'center', alignItems: 'center', backgroundColor: '#FB444B',
                 width: '80%', height: 40, borderRadius: 20, marginBottom: 30
@@ -102,8 +102,8 @@ function Account({ navigation }) {
         <TouchableOpacity onPress={() => {
           navigation.navigate('Home')
         }}>
-          <MaterialCommunityIcons name='close' 
-          style={{ position: 'absolute', right: 0, top: 10, marginRight: 10, color: 'white' }} size={26} />
+          <MaterialCommunityIcons name='close'
+            style={{ position: 'absolute', right: 0, top: 10, marginRight: 10, color: 'white' }} size={26} />
         </TouchableOpacity>
       </View>
       <View style={{ justifyContent: "center", alignItems: 'center', minHeight: 120 }}>
@@ -113,13 +113,15 @@ function Account({ navigation }) {
         </View>
         {
           ProfileImage !== "" &&
-          <Image source={ProfileImage} style={[styles.profileImage,]} />
+          <TouchableOpacity onPress={() => setProfileImage("")}>
+            <Image source={ProfileImage} style={[styles.profileImage,]} />
+          </TouchableOpacity>
         }
         {
           ProfileImage === "" &&
           <TouchableOpacity
-          onPress={() => setProfileImage(image)}
-          style={[styles.profileImage, { backgroundColor: 'rgb(240,240,240)' }]} >
+            onPress={() => setProfileImage(image)}
+            style={[styles.profileImage, { backgroundColor: 'rgb(240,240,240)' }]} >
             <Ionicons name='ios-camera-outline' size={40} style={[{ color: 'rgb(130,130,130)' }]} />
           </TouchableOpacity>
         }
@@ -169,7 +171,7 @@ function Account({ navigation }) {
                 Gender.toLocaleLowerCase() === 'female' ? 'gender-female' : 'checkbox-blank-circle-outline'}`} size={22}
               style={[Gender === "" ? styles.inactiveIcon : '']} />
           </View>
-          <View style={[styles.formInput,{justifyContent:'center'}, Gender === "" ? styles.fontEmptyStyle : '']}>
+          <View style={[styles.formInput, { justifyContent: 'center' }, Gender === "" ? styles.fontEmptyStyle : '']}>
             <Text>{Gender}</Text>
           </View>
         </TouchableOpacity>

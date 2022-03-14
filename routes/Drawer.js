@@ -78,6 +78,9 @@ import RedeemHistory from "../screens/RedeemHistory";
 import TalkToUs from "../screens/TalkToUs";
 import ForgotPassword from "../screens/ForgotPassword";
 import BarFab from "../components/BarFab";
+import Forgot_password_checkemail from "../screens/Forgot_password_checkemail";
+import ResetPassword from "../screens/ResetPassword";
+import Reset_password_thatsit from "../screens/Reset_password_thatsit";
 
 
 const Drawer = createDrawerNavigator();
@@ -97,9 +100,8 @@ export default function DrawerApp() {
           swipeEnabled:true,
         }}
         drawerContent={({ navigation }) => <DrawerMenu navigation={navigation} />}
-        initialRouteName="Search">
+        initialRouteName="Account">
 
-        <Drawer.Screen options={{ headerShown: false }} name="Root" component={BarFab} />
         <Drawer.Screen options={{ headerShown: false }} name="Search" component={Search} />
         <Drawer.Screen options={{ headerShown: false }} name="Home" component={Home} />
         <Drawer.Screen options={{ headerShown: false }} name="MemberShipInfo" component={MemberShipInfo} />
@@ -116,6 +118,12 @@ export default function DrawerApp() {
         <Drawer.Screen options={{ headerShown: false }} name="RedeemHistory" component={RedeemHistory} />
         <Drawer.Screen options={{ headerShown: false }} name="TalkToUs" component={TalkToUs} />
         <Drawer.Screen options={{ headerShown: false }} name="ForgotPassword" component={ForgotPassword} />
+        <Drawer.Screen options={{ headerShown: false }} name="Forgot_password_checkemail" component={Forgot_password_checkemail} />
+        <Drawer.Screen options={{ headerShown: false }} name="ResetPassword" component={ResetPassword} />
+        <Drawer.Screen options={{ headerShown: false }} name="Reset_password_thatsit" component={Reset_password_thatsit} />
+
+
+        
       </Drawer.Navigator>
     </NavigationContainer>
   );

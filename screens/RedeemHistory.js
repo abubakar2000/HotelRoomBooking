@@ -4,13 +4,13 @@ import { MaterialIcons } from '@expo/vector-icons'
 import profilePicture from '../assets/10.jpg';
 import randLogo from '../assets/adaptive-icon.png';
 
-const RedeemHistory = () => {
+const RedeemHistory = ({navigation}) => {
     return (
         <ScrollView style={{paddingLeft:20,paddingRight:20,}}>
             <View style={{ flexDirection: 'row', alignItems: 'center', height: 50, }}>
-                <Text style={{ width: '100%', textAlign: 'center', alignItems: 'center', fontSize: 18, fontWeight: 'bold' }}>Redeem History</Text>
-                <TouchableOpacity style={{ position: 'absolute', marginLeft: 10, }}
-                    onPress={() => { }}
+                <Text style={{ width: '100%', textAlign: 'center', alignItems: 'center', fontSize: 18, fontWeight: 'bold' }}>Redeem Histor</Text>
+                <TouchableOpacity style={{ position: 'absolute', marginLeft: 0, }}
+                    onPress={() => { navigation.goBack() }}
                 >
                     <MaterialIcons name='arrow-back-ios' size={24} />
                 </TouchableOpacity>

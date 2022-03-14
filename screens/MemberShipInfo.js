@@ -59,7 +59,7 @@ const MemberShipInfo = ({ navigation }) => {
             }
             <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
               <TouchableOpacity onPress={() => {
-
+                setMemberShipFamilyCodeError(MembershipFamilyCode === ""?true:false)
               }} style={{
                 justifyContent: 'center', alignItems: 'center', backgroundColor: '#FB444B',
                 width: '80%', height: 40, borderRadius: 20, marginBottom: 30

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput } from 
 import React, { useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 
-const ForgotPassword = ({navigation}) => {
+const ForgotPassword = ({ navigation }) => {
     const [EmailAddress, setEmailAddress] = useState("");
     const [Error, setError] = useState(true);
     return (
@@ -31,9 +31,20 @@ const ForgotPassword = ({navigation}) => {
                         paddingRight: 20, borderRadius: 20, height: 40
                     }, EmailAddress === "" ? { backgroundColor: 'rgb(220,220,220)', borderColor: 'rgb(220,220,220)' } : {}]} />
             </View>
-            <Text style={{paddingLeft:15,marginTop:10,marginBottom:10,color:'red'}}>Email address doesnt exist</Text>
+            {
+                Error &&
+                <Text style={{ paddingLeft: 15, marginTop: 10, marginBottom: 10, color: 'red' }}>Email address doesnt exist</Text>
+            }
             <View style={{ marginTop: 20, marginBottom: 13 }}>
                 <TouchableOpacity
+                    onPress={() => {
+                        if (EmailAddress === "") {
+                            setError(true)
+                        } else {
+                            setError(false)
+                            navigation.navigate('Forgot_password_checkemail');
+                        }
+                    }}
                     style={[{
                         width: '100%', borderWidth: 1, borderColor: 'red', alignItems: 'center', justifyContent: 'center', fontSize: 16, paddingLeft: 20,
                         paddingRight: 20, borderRadius: 20, height: 40

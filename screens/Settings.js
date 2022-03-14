@@ -1,17 +1,17 @@
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, ImageBackground } from 'react-native'
 import React from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 import profilePicture from '../assets/10.jpg'
 
 const Settings = ({ navigation }) => {
     return (
-        <ScrollView style={{ paddingLeft: 10, paddingRight: 0, height: '100%' }}>
+        <ScrollView style={{ paddingLeft: 10, paddingRight: 0, height: '100%', backgroundColor: '#FFFFFF' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', height: 50, }}>
                 <Text style={{ width: '100%', textAlign: 'center', alignItems: 'center', fontSize: 18, fontWeight: 'bold' }}>Settings</Text>
-                <TouchableOpacity style={{ position: 'absolute', marginLeft: 0, }} onPress={()=>{
+                <TouchableOpacity style={{ position: 'absolute', marginLeft: 0, }} onPress={() => {
                     navigation.goBack();
                 }}>
-                    <MaterialIcons name='arrow-back-ios'  size={24} />
+                    <MaterialIcons name='arrow-back-ios' size={24} />
                 </TouchableOpacity>
             </View>
             <View style={{ paddingLeft: 20 }}>
@@ -37,7 +37,7 @@ const Settings = ({ navigation }) => {
                         paddingBottom: 5
                     }} onPress={() => navigation.navigate("RedeemHistory")}>
                         <View style={{ flexDirection: 'row', alignItems: 'center', }}>
-                            <MaterialIcons style={[styles.tabIco3]} name='graphic-eq' size={30} />
+                            <ImageBackground style={{ height: 20, width: 20, margin: 12 }} resizeMode="contain" source={require('../assets/redeem.png')} ></ImageBackground>
                             <Text style={{ fontSize: 17 }}>Redeem History</Text>
                         </View>
                         <MaterialIcons style={[styles.tabIco3]} name='navigate-next' size={35} />
@@ -48,7 +48,7 @@ const Settings = ({ navigation }) => {
                         paddingBottom: 5
                     }} onPress={() => navigation.navigate('ForgotPassword')}>
                         <View style={{ flexDirection: 'row', alignItems: 'center', }}>
-                            <MaterialIcons style={[styles.tabIco3]} name='graphic-eq' size={30} />
+                            <ImageBackground style={{ height: 20, width: 20, margin: 12 }} resizeMode="contain" source={require('../assets/password.png')} ></ImageBackground>
                             <Text style={{ fontSize: 17 }}>Forgot Password</Text>
                         </View>
                         <MaterialIcons style={[styles.tabIco3]} name='navigate-next' size={35} />
@@ -65,7 +65,7 @@ const Settings = ({ navigation }) => {
                     paddingBottom: 5
                 }} onPress={() => navigation.navigate('Language')}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', }}>
-                        <MaterialIcons style={[styles.tabIco3]} name='graphic-eq' size={30} />
+                        <ImageBackground style={{ height: 20, width: 20, margin: 12 }} resizeMode="contain" source={require('../assets/language.png')} ></ImageBackground>
                         <Text style={{ fontSize: 17 }}>Language</Text>
                     </View>
                     <MaterialIcons style={[styles.tabIco3]} name='navigate-next' size={35} />
@@ -76,7 +76,7 @@ const Settings = ({ navigation }) => {
                     paddingBottom: 5
                 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', }}>
-                        <MaterialIcons style={[styles.tabIco3]} name='graphic-eq' size={30} />
+                        <ImageBackground style={{ height: 20, width: 20, margin: 12 }} resizeMode="contain" source={require('../assets/notifunction2.png')} ></ImageBackground>
                         <Text style={{ fontSize: 17 }}>Notification</Text>
                     </View>
                     <MaterialIcons style={[styles.tabIco3]} name='navigate-next' size={35} />
@@ -87,7 +87,7 @@ const Settings = ({ navigation }) => {
                     paddingBottom: 5
                 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', }}>
-                        <MaterialIcons style={[styles.tabIco3]} name='graphic-eq' size={30} />
+                        <ImageBackground style={{ height: 20, width: 20, margin: 12 }} resizeMode="contain" source={require('../assets/dark.png')} ></ImageBackground>
                         <Text style={{ fontSize: 17 }}>Dark Mode</Text>
                     </View>
                     <MaterialIcons style={[styles.tabIco3]} name='navigate-next' size={35} />
@@ -98,7 +98,7 @@ const Settings = ({ navigation }) => {
                     paddingBottom: 5
                 }} onPress={() => navigation.navigate('TalkToUs')}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', }}>
-                        <MaterialIcons style={[styles.tabIco3]} name='graphic-eq' size={30} />
+                        <ImageBackground style={{ height: 20, width: 20, margin: 12 }} resizeMode="contain" source={require('../assets/phone2.png')} ></ImageBackground>
                         <Text style={{ fontSize: 17 }}>Talk To Us</Text>
                     </View>
                     <MaterialIcons style={[styles.tabIco3]} name='navigate-next' size={35} />
@@ -109,7 +109,7 @@ const Settings = ({ navigation }) => {
                     paddingBottom: 5
                 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', }}>
-                        <MaterialIcons style={[styles.tabIco3]} name='graphic-eq' size={30} />
+                        <ImageBackground style={{ height: 20, width: 20, margin: 12 }} resizeMode="contain" source={require('../assets/logout.png')} ></ImageBackground>
                         <Text style={{ fontSize: 17 }}>Log out</Text>
                     </View>
                     <MaterialIcons style={[styles.tabIco3]} name='navigate-next' size={35} />

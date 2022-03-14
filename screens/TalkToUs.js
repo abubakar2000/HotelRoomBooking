@@ -9,7 +9,7 @@ const TalkToUs = ({navigation}) => {
     return (
         <ScrollView style={{ paddingLeft: 15, paddingRight: 20, }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', height: 50, }}>
-                <Text style={{ width: '100%', textAlign: 'center', alignItems: 'center', fontSize: 18, fontWeight: 'bold' }}>Redeem History</Text>
+                <Text style={{ width: '100%', textAlign: 'center', alignItems: 'center', fontSize: 18, fontWeight: 'bold' }}>Talk To Us</Text>
                 <TouchableOpacity style={{ position: 'absolute', marginLeft: 0, }}
                     onPress={() => { 
                         navigation.goBack();
@@ -38,7 +38,7 @@ const TalkToUs = ({navigation}) => {
                     style={[{
                         width: '100%', borderWidth: 1, borderColor: 'rgb(200,200,200)', fontSize: 16, paddingLeft: 20,
                         paddingRight: 20, borderRadius: 20, height: 40
-                    },Name===""?{backgroundColor:'rgb(220,220,220)',borderColor:'rgb(220,220,220)'}:{}]} />
+                    },MobileNo===""?{backgroundColor:'rgb(220,220,220)',borderColor:'rgb(220,220,220)'}:{}]} />
             </View>
             <View style={{marginTop:13,marginBottom:13}}>
                 <Text style={{ paddingLeft: 20, paddingBottom: 5 }}>Your Concern</Text>
@@ -48,7 +48,7 @@ const TalkToUs = ({navigation}) => {
                     style={[{
                         width: '100%', borderWidth: 1, borderColor: 'rgb(200,200,200)', fontSize: 16, paddingLeft: 20,
                         paddingRight: 20, borderRadius: 20, height: 40
-                    },Name===""?{backgroundColor:'rgb(220,220,220)',borderColor:'rgb(220,220,220)'}:{}]} />
+                    },YourConcern===""?{backgroundColor:'rgb(220,220,220)',borderColor:'rgb(220,220,220)'}:{}]} />
             </View>
             <View style={{marginTop:20,marginBottom:13}}>
                 <TouchableOpacity
@@ -57,7 +57,7 @@ const TalkToUs = ({navigation}) => {
                         paddingRight: 20, borderRadius: 20, height: 40
                     }]} ><Text style={{color:'red'}}>SUBMIT</Text></TouchableOpacity>
             </View>
-            <View style={{alignItems:'center',marginTop:200}}>
+            <View style={{alignItems:'center',marginTop:100}}>
                 <Text>Didn't get a reply?</Text>
                 <Text style={{color:'red'}}>Call us directly</Text>
             </View>
