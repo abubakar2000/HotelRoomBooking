@@ -322,6 +322,7 @@ const Home = ({ navigation }) => {
               style={{ height: 200, width: 200, backgroundColor: 'gray', borderRadius: 15, margin: 10 }}>
 
             </ImageBackground>
+            <View style={{height:100}}></View>
           </ScrollView>
         </View>
       </ScrollView>

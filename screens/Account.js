@@ -4,7 +4,9 @@ import { Image, ScrollView, Text, TouchableOpacity, View, TextInput, Modal, Aler
 import { StyleSheet } from 'react-native'
 import { Dimensions } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { ImageBackground } from 'react-native';
 import image from './../assets/10.jpg'
+import { borderColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 function Account({ navigation }) {
 
   const [Name, setName] = useState("");
@@ -21,18 +23,6 @@ function Account({ navigation }) {
   const [ShowModal, setShowModal] = useState(false)
 
   const { height, width } = Dimensions.get('screen')
-
-  useEffect(() => {
-    // setProfileImage(image);
-  }, [])
-
-
-  const [Open, setOpen] = useState(false)
-  const [Value, setValue] = useState(null)
-  const [Items, setItems] = useState([
-    { label: 'Apple', value: 'apple' },
-    { label: 'Banana', value: 'banana' }
-  ])
 
   return (
     <ScrollView style={styles.container}>
@@ -98,23 +88,24 @@ function Account({ navigation }) {
 
 
 
-      <View style={{ backgroundColor: 'rgb(255,70,70)', height: 70 }}>
-        <TouchableOpacity onPress={() => {
-          navigation.navigate('Home')
-        }}>
-          <MaterialCommunityIcons name='close'
-            style={{ position: 'absolute', right: 0, top: 10, marginRight: 10, color: 'white' }} size={26} />
-        </TouchableOpacity>
-      </View>
-      <View style={{ justifyContent: "center", alignItems: 'center', minHeight: 120 }}>
-        <View style={{ height: 160, position: 'absolute', width: '100%', }}>
-          <View style={{ backgroundColor: 'rgb(255,70,70)', flex: 1 }}></View>
-          <View style={{ backgroundColor: 'white', flex: 1 }}></View>
-        </View>
+      <View style={{ height: 240 }}>
+        <ImageBackground
+          source={require('../assets/wavyred.png')}
+          style={{ height: 150, width: '100%', justifyContent: 'center', alignItems: 'center' }} >
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Home')
+            }}
+            style={{ position: 'absolute', top: 30, right: 20 }}>
+            <MaterialCommunityIcons name='close' size={30} color={'white'} style={{}} />
+          </TouchableOpacity>
+        </ImageBackground>
         {
           ProfileImage !== "" &&
-          <TouchableOpacity onPress={() => setProfileImage("")}>
-            <Image source={ProfileImage} style={[styles.profileImage,]} />
+          <TouchableOpacity
+            style={[styles.profileImage,]}
+            onPress={() => setProfileImage("")}>
+            <Image source={ProfileImage} style={{ borderRadius: 100 }} />
           </TouchableOpacity>
         }
         {
@@ -127,31 +118,33 @@ function Account({ navigation }) {
         }
       </View>
 
+
+
       <View style={[styles.body, { marginTop: 0 }]}>
         <View style={[styles.formRow]}>
           <View style={[styles.imageStyle, Name === "" ? styles.imageStyleEmptyStyle : '']} >
-            <SimpleLineIcons name='user' size={22} style={[Name === "" ? styles.inactiveIcon : '']} />
+            <SimpleLineIcons name='user' size={22} style={[Name === "" ? styles.inactiveIcon : styles.activeIcon]} />
           </View>
           <TextInput
             value={Name} placeholderTextColor='rgb(130,130,130)'
             placeholder={Name === "" ? "Full Number" : ""}
-            onChangeText={e => setName(e)} style={[styles.formInput, Name === "" ? styles.fontEmptyStyle : '']} />
+            onChangeText={e => setName(e)} style={[styles.formInput, Name === "" ? styles.fontEmptyStyle : styles.activeIcon]} />
         </View>
         <View style={[styles.formRow]}>
           <View style={[styles.imageStyle, MobilNo === "" ? styles.imageStyleEmptyStyle : '']} >
-            <SimpleLineIcons name='phone' size={22} style={[MobilNo === "" ? styles.inactiveIcon : '']} />
+            <SimpleLineIcons name='phone' size={22} style={[MobilNo === "" ? styles.inactiveIcon : styles.activeIcon]} />
           </View>
           <TextInput value={MobilNo} placeholderTextColor='rgb(130,130,130)'
             placeholder={MobilNo === "" ? "Mobile No." : ""}
-            onChangeText={e => setMobilNo(e)} style={[styles.formInput, MobilNo === "" ? styles.fontEmptyStyle : '']} />
+            onChangeText={e => setMobilNo(e)} style={[styles.formInput, MobilNo === "" ? styles.fontEmptyStyle : styles.activeIcon]} />
         </View>
         <View style={[styles.formRow]}>
           <View style={[styles.imageStyle, Email === "" ? styles.imageStyleEmptyStyle : '']} >
-            <MaterialIcons name='mail' size={22} style={[Email === "" ? styles.inactiveIcon : '']} />
+            <MaterialIcons name='mail' size={22} style={[Email === "" ? styles.inactiveIcon : styles.activeIcon]} />
           </View>
           <TextInput value={Email} placeholderTextColor='rgb(130,130,130)'
             placeholder={Email === "" ? "Email" : ""}
-            onChangeText={e => setEmail(e)} style={[styles.formInput, Email === "" ? styles.fontEmptyStyle : '']} />
+            onChangeText={e => setEmail(e)} style={[styles.formInput, Email === "" ? styles.fontEmptyStyle : styles.activeIcon]} />
         </View>
 
         <TouchableOpacity
@@ -169,7 +162,7 @@ function Account({ navigation }) {
             <MaterialCommunityIcons
               name={`${Gender.toLowerCase() === 'male' ? 'gender-male' :
                 Gender.toLocaleLowerCase() === 'female' ? 'gender-female' : 'checkbox-blank-circle-outline'}`} size={22}
-              style={[Gender === "" ? styles.inactiveIcon : '']} />
+              style={[Gender === "" ? styles.inactiveIcon : styles.activeIcon]} />
           </View>
           <View style={[styles.formInput, { justifyContent: 'center' }, Gender === "" ? styles.fontEmptyStyle : '']}>
             <Text>{Gender}</Text>
@@ -177,7 +170,7 @@ function Account({ navigation }) {
         </TouchableOpacity>
         <View style={[styles.formRow]}>
           <View style={[styles.imageStyle, Dob === "" ? styles.imageStyleEmptyStyle : '']} >
-            <SimpleLineIcons name='calendar' size={22} style={[Dob === "" ? styles.inactiveIcon : '']} />
+            <SimpleLineIcons name='calendar' size={22} style={[Dob === "" ? styles.inactiveIcon : styles.activeIcon]} />
           </View>
           <TextInput value={Dob} placeholderTextColor='rgb(130,130,130)'
             placeholder={Dob === "" ? "Birthday" : ""}
@@ -185,7 +178,7 @@ function Account({ navigation }) {
         </View>
         <View style={[styles.formRow]}>
           <View style={[styles.imageStyle, Location === "" ? styles.imageStyleEmptyStyle : '']} >
-            <SimpleLineIcons name='map' size={22} style={[Location === "" ? styles.inactiveIcon : '']} />
+            <SimpleLineIcons name='map' size={22} style={[Location === "" ? styles.inactiveIcon : styles.activeIcon]} />
           </View>
           <TextInput value={Location} placeholderTextColor='rgb(130,130,130)'
             placeholder={Location === "" ? "City of Residence" : ""}
@@ -197,7 +190,7 @@ function Account({ navigation }) {
 
       <View style={[styles.formRow]}>
         <View style={[styles.imageStyle, MembershipFamilyCode === "" ? styles.imageStyleEmptyStyle : '']} >
-          <Ionicons name='key-outline' size={22} style={[MembershipFamilyCode === "" ? styles.inactiveIcon : '']} />
+          <Ionicons name='key-outline' size={22} style={[MembershipFamilyCode === "" ? styles.inactiveIcon : styles.activeIcon]} />
         </View>
         <TextInput onPressIn={() => {
           setShowModal(true)
@@ -251,7 +244,10 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     margin: 20,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    top: 70,
+    alignSelf: 'center',
+    position: 'absolute'
   },
   formRow: {
     flexDirection: 'row',
@@ -275,18 +271,22 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     borderWidth: 1,
-    borderColor: 'rgb(200,200,200)',
     borderRadius: 25,
     margin: 5,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderColor: 'rgb(130,130,130)'
   },
   imageStyleEmptyStyle: {
-    backgroundColor: 'rgb(245,245,245)',
-    borderColor: 'rgb(245,245,245)',
+
+    borderColor: 'white',
+    backgroundColor: 'rgb(240,240,240)'
   },
   inactiveIcon: {
     color: 'rgb(130,130,130)'
+  },
+  activeIcon: {
+    color: 'black',
   },
   textMemberShip: {
     backgroundColor: 'white',
